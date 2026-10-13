@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Proyecto - ¿Qué hay de cena?</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Proyecto: ¿Qué hay de cena?</h1>
+        <nav>
+            <a href="index.html">Inicio</a>
+            <a href="teoria.html">Teoría</a>
+            <a href="rana.html">Rana</a>
+            <a href="conejo.html">Conejo</a>
+            <a href="cena.html">Cena</a>
+            <a href="sol.html">Día Nevado</a>
+            <a href="muneco.html">Muñeco</a>
+        </nav>
+    </header>
+    <main>
+        <h2>Composición Culinaria</h2>
+        <div class="canvas-container" id="canvas-cena"></div>
+    </main>
+    <script>
+        function setup() {
+            let c = createCanvas(400, 400);
+            c.parent("canvas-cena");
+            
+            background(186, 145, 20);
+
+            noStroke();
+            fill(0, 0, 50);
+            ellipse(205,205,330,330);
+
+            stroke(0, 0, 0);
+            strokeWeight(2);
+            fill(255, 250, 250);
+            ellipse(200,200,330,330);
+
+            fill(235, 235, 240);
+            ellipse(200,200,280,280);
+
+            noStroke();
+            fill(15, 35, 20);
+            ellipse(200,200,190,190);
+
+            fill(245, 245, 245);
+            ellipse(200,200,175,175);
+
+            noStroke();
+            fill(15, 35, 20);
+            ellipse(200,200,190,190);
+
+            fill(245, 245, 245);
+            ellipse(200,200,190,190);
+
+            fill(255, 225, 230);
+            ellipse(180,150,12,7);
+            ellipse(220,155,12,7);
+            ellipse(150,155,7,12);
+            ellipse(250,185,7,12);
+            ellipse(160,220,12,7);
+            ellipse(240,215,12,7);
+            ellipse(190,250,7,12);
+            ellipse(215,245,12,7);
+
+            fill(70, 140, 45);
+            ellipse(180,195,60,45);
+            fill(180,195,60,45);
+            ellipse(180,195,45,30);
+
+            fill(255, 255, 240);
+            ellipse(215,215,40,35);
+
+            fill(220, 60, 60);
+            ellipse(205,180,70,50);
+
+            stroke(255, 180, 180);
+            strokeWeight(2);
+            line(185,170,215,195);
+            line(195,165,225,190);
+            noStroke();
+
+            fill(255,110,0);
+            ellipse(225,185,10,10);
+            ellipse(230,195,9,9);
+            ellipse(218,192,8,8);
+            ellipse(235,188,7,7);
+
+            fill(255,170,190);
+            ellipse(300,115,30,20);
+            ellipse(305,120,25,15);
+
+            stroke(110,70,30);
+            strokeWeight(5);
+            line(40,360,340,260);
+            stroke(130,85,40);
+            strokeWeight(3);
+            line(50,370,350,270);
+        }
+    </script>
+</body>
+</html>

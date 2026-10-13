@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Proyecto - Día nevado soleado</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Proyecto: Día nevado soleado</h1>
+        <nav>
+            <a href="index.html">Inicio</a>
+            <a href="teoria.html">Teoría</a>
+            <a href="rana.html">Rana</a>
+            <a href="conejo.html">Conejo</a>
+            <a href="cena.html">Cena</a>
+            <a href="sol.html">Día Nevado</a>
+            <a href="muneco.html">Muñeco</a>
+        </nav>
+    </header>
+    <main>
+        <h2>Paisaje de Día Nevado y Soleado</h2>
+        <div class="canvas-container" id="canvas-sol"></div>
+    </main>
+    <script>
+        function setup() {
+            let c = createCanvas(400, 400);
+            c.parent("canvas-sol");
+
+            // The ground
+            background(78, 212, 194);
+            fill(26, 255, 0);
+            rect(0, 300, 400, 100);  
+
+            // The sun
+            fill(231, 235, 0);
+            ellipse(80, 64, 100, 100);  
+            fill(250, 250, 250);
+
+            // The snowman
+            ellipse(200, 300, 150, 150);
+            ellipse(200, 200, 100, 100);
+            ellipse(200, 120, 75, 75);
+        }
+    </script>
+</body>
+</html>

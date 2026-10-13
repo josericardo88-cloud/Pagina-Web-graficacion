@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Proyecto - Muñeco de nieve</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Proyecto: Muñeco de nieve</h1>
+        <nav>
+            <a href="index.html">Inicio</a>
+            <a href="teoria.html">Teoría</a>
+            <a href="rana.html">Rana</a>
+            <a href="conejo.html">Conejo</a>
+            <a href="cena.html">Cena</a>
+            <a href="sol.html">Día Nevado</a>
+            <a href="muneco.html">Muñeco</a>
+        </nav>
+    </header>
+    <main>
+        <h2>Ilustración de Muñeco de Nieve</h2>
+        <div class="canvas-container" id="canvas-muneco"></div>
+    </main>
+    <script>
+        function setup() {
+            let c = createCanvas(400, 400);
+            c.parent("canvas-muneco");
+            background(220);
+
+            rect(0,335,398,63);
+            ellipse(200, 300, 150, 150);
+            ellipse(200, 200, 100, 100);
+            ellipse(200, 120, 75, 75);
+            line(239,183,282,127);
+            line(172,183,282,127);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sección Teórica - Canvas y p5.js</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Fundamentos Teóricos</h1>
+        <nav>
+            <a href="index.html">Inicio</a>
+            <a href="teoria.html">Sección Teórica</a>
+            <a href="rana.html">Rana</a>
+            <a href="conejo.html">Dientes de Conejo</a>
+            <a href="cena.html">¿Qué hay de cena?</a>
+            <a href="sol.html">Día Nevado</a>
+            <a href="muneco.html">Muñeco de Nieve</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>1. La etiqueta HTML &lt;canvas&gt; y sus contextos de renderizado 2D</h2>
+        <p>La etiqueta HTML <code>&lt;canvas&gt;</code> es un contenedor gráfico introducido en HTML5 que permite dibujar gráficos en tiempo real mediante secuencias de comandos (usualmente JavaScript). Por sí sola, la etiqueta es solo un rectángulo transparente; se requiere un <strong>contexto de renderizado</strong> para dibujar en él.</p>
+        <p>El contexto 2D (<code>canvas.getContext('2d')</code>) proporciona los métodos y propiedades necesarios para renderizar formas geométricas (rectángulos, círculos, trazos), texto, imágenes y manipular pixeles directamente en un plano cartesiano bidimensional.</p>
+
+        <h2>2. Fundamentos de la librería p5.js</h2>
+        <p><strong>p5.js</strong> es una biblioteca de JavaScript que reimagina Processing para la Web, facilitando la creación de arte interactivo, animaciones y gráficos. Sus pilares fundamentales son:</p>
+        <ul>
+            <li><strong>Función <code>setup()</code>:</strong> Se ejecuta una sola vez cuando el programa inicia. Se utiliza para definir el tamaño del lienzo (<code>createCanvas()</code>) y configuraciones iniciales.</li>
+            <li><strong>Función <code>draw()</code>:</strong> Se ejecuta en un bucle continuo (por defecto 60 veces por segundo). Es ideal para animaciones, manejo de eventos del mouse y redibujado de elementos gráficos.</li>
+            <li><strong>Abstracción del DOM y geometría:</strong> Simplifica funciones de dibujo como <code>ellipse()</code>, <code>rect()</code>, <code>line()</code> y el control de colores con <code>fill()</code> y <code>stroke()</code>, haciendo el código intuitivo y portable directamente desde plataformas educativas como Khan Academy.</li>
+        </ul>
+    </main>
+
+    <footer>
+        <p>Fundamentos de Desarrollo Web y Gráficos por Computadora.</p>
+    </footer>
+</body>
+</html>

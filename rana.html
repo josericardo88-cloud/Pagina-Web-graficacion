@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Proyecto - Rana</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Carga de p5.js desde CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Proyecto: Rana</h1>
+        <nav>
+            <a href="index.html">Inicio</a>
+            <a href="teoria.html">Teoría</a>
+            <a href="rana.html">Rana</a>
+            <a href="conejo.html">Conejo</a>
+            <a href="cena.html">Cena</a>
+            <a href="sol.html">Día Nevado</a>
+            <a href="muneco.html">Muñeco</a>
+        </nav>
+    </header>
+    <main>
+        <h2>Dibujo Vectorial de una Rana</h2>
+        <div class="canvas-container" id="canvas-rana"></div>
+    </main>
+    <script>
+        function setup() {
+            let c = createCanvas(400, 400);
+            c.parent("canvas-rana");
+            background(220);
+            
+            var x = 200;
+            var y = 250;
+
+            noStroke();
+            fill(30, 204, 91); // a nice froggy green!
+
+            ellipse(x, y, 200, 100); // face
+            ellipse(x - 50, y - 50, 40, 40); // left eye socket
+            ellipse(x + 50, y - 50, 40, 40); // right eye socket
+
+            fill(0, 0, 0);
+            ellipse(x,y,100,50);
+
+            fill(255, 255, 255); // for the whites of the eyes!
+            ellipse(x - 50, y - 50, 30, 30); // left eyeball
+            ellipse(x + 50, y - 50, 30, 30); // right eyeball
+
+            fill (0, 0, 0);
+            rect(x -50, y - 50, 10,10);
+            rect(x +50, y - 50, 10,10);
+        }
+    </script>
+</body>
+</html>
