@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inspector del Árbol del DOM</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Inspector del Árbol del DOM</h1>
+        <nav>
+            <a href="index.html">Inicio</a>
+            <a href="teoria.html">Teoría</a>
+            <a href="dom-inspector.html" class="active">Árbol del DOM</a>
+            <a href="rana.html">Rana</a>
+            <a href="conejo.html">Conejo</a>
+            <a href="cena.html">Cena</a>
+            <a href="sol.html">Día Nevado</a>
+            <a href="muneco.html">Muñeco</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Representación Gráfica y Jerárquica del DOM</h2>
+        <p>A continuación se muestra la representación visual del árbol del DOM para las páginas principales del sitio web, destacando la relación jerárquica desde el nodo raíz hasta sus elementos hijos[cite: 1]:</p>
+
+        <div class="dom-tree">
+            <!-- Nivel Raíz -->
+            <div class="dom-node">&lt;html&gt; (Raíz del Documento)</div>
+            
+            <div class="dom-branch">
+                <!-- Rama Head -->
+                <div class="dom-subgroup">
+                    <div class="dom-node">&lt;head&gt;</div>
+                    <div class="dom-branch">
+                        <div class="dom-node" style="font-size: 0.8rem; background: #0f172a; color: #cbd5e1;">
+                            &lt;meta&gt;<br>&lt;title&gt;<br>&lt;link rel="stylesheet"&gt;
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Rama Body -->
+                <div class="dom-subgroup">
+                    <div class="dom-node">&lt;body&gt;</div>
+                    <div class="dom-branch">
+                        <div class="dom-subgroup">
+                            <div class="dom-node" style="font-size: 0.85rem;">&lt;header&gt;</div>
+                            <div class="dom-node" style="font-size: 0.85rem; margin-top:15px;">&lt;nav&gt; (Enlaces)</div>
+                        </div>
+                        <div class="dom-subgroup">
+                            <div class="dom-node" style="font-size: 0.85rem;">&lt;main id="..."&gt;</div>
+                            <div class="dom-node" style="font-size: 0.85rem; margin-top:15px; color: #f43f5e;">&lt;canvas&gt; (p5.js)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <p style="margin-top: 30px;"><strong>Estructura explicada:</strong> El Modelo de Objetos del Documento (DOM) interpreta los documentos HTML como una estructura de árbol jerárquica donde cada etiqueta es un nodo interactuable por JavaScript.</p>
+    </main>
+
+    <footer>
+        <p>Portafolio Gráfico Interactivo - Tecnológico Nacional de México.</p>
+    </footer>
+</body>
+</html>
