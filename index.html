@@ -18,17 +18,150 @@
             <a href="cena.html">Cena</a>
             <a href="sol.html">Día Nevado</a>
             <a href="muneco.html">Muñeco</a>
+            <a href="sol-explota.html" class="new">Sol que Explota</a>
+            <a href="nubes.html" class="new">Nubes</a>
+            <a href="estrella-fugaz.html" class="new">Estrella Fugaz</a>
         </nav>
     </header>
 
-    <main>
-        <h2>¡Bienvenido a mi sitio web de gráficos y animaciones!</h2>
-        <p>Este sitio web fue desarrollado por <strong>José Ricardo Orozco Sauceda</strong> como parte de la transición de los retos realizados en el simulador de <strong>Khan Academy</strong> hacia un entorno de desarrollo web real utilizando HTML5, CSS3 y la librería <strong>p5.js</strong> con la etiqueta <code>&lt;canvas&gt;</code>.</p>
-        <p>Utiliza el menú superior para navegar entre los apartados teóricos, el inspector visual del árbol del DOM y cada uno de los proyectos gráficos desarrollados.</p>
+    <main class="wide">
+        <section class="hero">
+            <h2>Mesa de Control del Observatorio</h2>
+            <p>
+                Sitio desarrollado por <strong>José Ricardo Orozco Sauceda</strong> al llevar los retos del simulador de
+                <strong>Khan Academy</strong> a un entorno web real con HTML5, CSS3, JavaScript y la librería
+                <strong>p5.js</strong> sobre la etiqueta <code>&lt;canvas&gt;</code>.
+                Elige un universo y haz clic para explorarlo.
+            </p>
+            <div class="chips" role="tablist" aria-label="Filtrar proyectos">
+                <button class="chip on" data-filter="todos">✨ Todos</button>
+                <button class="chip" data-filter="nuevo">🚀 Nuevos</button>
+                <button class="chip" data-filter="clasico">🎨 Clásicos</button>
+                <button class="chip" id="random-btn">🎲 Sorpréndeme</button>
+            </div>
+        </section>
+
+        <h3 class="section-title">Galería de proyectos</h3>
+        <p class="section-sub">Las tarjetas con vista previa en vivo se dibujan en tiempo real con la API 2D de &lt;canvas&gt;.</p>
+
+        <div class="gallery" id="gallery">
+            <!-- NUEVOS -->
+            <a class="card" data-cat="nuevo" href="sol-explota.html">
+                <div class="card-visual">
+                    <span class="badge">Nuevo</span>
+                    <canvas width="400" height="400" data-preview="sol"></canvas>
+                </div>
+                <div class="card-body">
+                    <h3>☀️ El Sol que Explota</h3>
+                    <p>Un sol que crece sin parar detrás del horizonte.</p>
+                    <span class="card-cta">Abrir proyecto →</span>
+                </div>
+            </a>
+
+            <a class="card" data-cat="nuevo" href="nubes.html">
+                <div class="card-visual">
+                    <span class="badge">Nuevo</span>
+                    <canvas width="400" height="400" data-preview="nubes"></canvas>
+                </div>
+                <div class="card-body">
+                    <h3>☁️ Nubes que se Separan</h3>
+                    <p>Dos nubes se alejan mientras el sol crece.</p>
+                    <span class="card-cta">Abrir proyecto →</span>
+                </div>
+            </a>
+
+            <a class="card" data-cat="nuevo" href="estrella-fugaz.html">
+                <div class="card-visual">
+                    <span class="badge">Nuevo</span>
+                    <canvas width="400" height="400" data-preview="estrella"></canvas>
+                </div>
+                <div class="card-body">
+                    <h3>🌠 Estrella Fugaz</h3>
+                    <p>Dos estrellas con estela cruzan el cielo nocturno.</p>
+                    <span class="card-cta">Abrir proyecto →</span>
+                </div>
+            </a>
+
+            <!-- CLÁSICOS -->
+            <a class="card" data-cat="clasico" href="rana.html">
+                <div class="card-visual" style="--g1:#16a34a; --g2:#a3e635;">
+                    <span class="badge classic">Clásico</span>
+                    <span class="emoji">🐸</span>
+                </div>
+                <div class="card-body">
+                    <h3>Rana</h3>
+                    <p>Dibujo vectorial de una rana verde.</p>
+                    <span class="card-cta">Abrir proyecto →</span>
+                </div>
+            </a>
+
+            <a class="card" data-cat="clasico" href="conejo.html">
+                <div class="card-visual" style="--g1:#db2777; --g2:#fb923c;">
+                    <span class="badge classic">Clásico</span>
+                    <span class="emoji">🐰</span>
+                </div>
+                <div class="card-body">
+                    <h3>Dientes de Conejo</h3>
+                    <p>Un conejo con orejas, ojos y dientes dibujados con formas.</p>
+                    <span class="card-cta">Abrir proyecto →</span>
+                </div>
+            </a>
+
+            <a class="card" data-cat="clasico" href="cena.html">
+                <div class="card-visual" style="--g1:#b45309; --g2:#f59e0b;">
+                    <span class="badge classic">Clásico</span>
+                    <span class="emoji">🍽️</span>
+                </div>
+                <div class="card-body">
+                    <h3>¿Qué hay de cena?</h3>
+                    <p>Un plato servido visto desde arriba.</p>
+                    <span class="card-cta">Abrir proyecto →</span>
+                </div>
+            </a>
+
+            <a class="card" data-cat="clasico" href="sol.html">
+                <div class="card-visual" style="--g1:#0369a1; --g2:#7dd3fc;">
+                    <span class="badge classic">Clásico</span>
+                    <span class="emoji">☀️</span>
+                </div>
+                <div class="card-body">
+                    <h3>Día Nevado Soleado</h3>
+                    <p>Un muñeco de nieve bajo un sol brillante.</p>
+                    <span class="card-cta">Abrir proyecto →</span>
+                </div>
+            </a>
+
+            <a class="card" data-cat="clasico" href="muneco.html">
+                <div class="card-visual" style="--g1:#6d28d9; --g2:#38bdf8;">
+                    <span class="badge classic">Clásico</span>
+                    <span class="emoji">⛄</span>
+                </div>
+                <div class="card-body">
+                    <h3>Muñeco de Nieve</h3>
+                    <p>Ilustración del muñeco con círculos y líneas.</p>
+                    <span class="card-cta">Abrir proyecto →</span>
+                </div>
+            </a>
+        </div>
+
+        <h3 class="section-title">Aprende y explora</h3>
+        <div class="info-grid">
+            <a class="info-box" href="teoria.html" style="text-decoration:none;color:inherit;">
+                <h4>📚 Teoría</h4>
+                <p>Qué es <code>&lt;canvas&gt;</code>, su contexto 2D y los fundamentos de p5.js.</p>
+            </a>
+            <a class="info-box" href="dom-inspector.html" style="text-decoration:none;color:inherit;">
+                <h4>🌳 Árbol del DOM</h4>
+                <p>Visualiza gráficamente la jerarquía de etiquetas de cada página del sitio.</p>
+            </a>
+        </div>
     </main>
 
     <footer>
         <p>Desarrollado por José Ricardo Orozco Sauceda | Ingeniería de Software y Desarrollo Web.</p>
     </footer>
+
+    <script src="previews.js"></script>
+    <script src="main.js"></script>
 </body>
 </html>

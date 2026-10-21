@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estrella Fugaz - Portafolio Khan Academy</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Estrella Fugaz</h1>
+        <nav>
+            <a href="index.html">Inicio</a>
+            <a href="teoria.html">Teoría</a>
+            <a href="dom-inspector.html">Árbol del DOM</a>
+            <a href="rana.html">Rana</a>
+            <a href="conejo.html">Conejo</a>
+            <a href="cena.html">Cena</a>
+            <a href="sol.html">Día Nevado</a>
+            <a href="muneco.html">Muñeco</a>
+            <a href="sol-explota.html" class="new">Sol que Explota</a>
+            <a href="nubes.html" class="new">Nubes</a>
+            <a href="estrella-fugaz.html" class="new active">Estrella Fugaz</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>🌠 Estrella Fugaz</h2>
+        <p>Una estrella con estela naranja cruza el cielo de arriba a la izquierda hacia abajo a la derecha, mientras otra más pequeña y azul viaja en sentido contrario. Al salir de pantalla, ambas reaparecen por el lado opuesto.</p>
+
+        <div class="canvas-container" id="canvas-holder"></div>
+
+        <div class="controls">
+            <button class="btn" data-action="toggle">⏸ Pausar</button>
+            <button class="btn alt" data-action="reset">↺ Reiniciar</button>
+        </div>
+
+        <div class="info-grid">
+            <div class="info-box"><h4>Estela</h4><p>Tres círculos de distinto color y tamaño, desplazados detrás de la cabeza, simulan la cola.</p></div>
+            <div class="info-box"><h4>Condicionales</h4><p>Con <code>if</code> se detecta cuando la estrella sale del lienzo y se reposiciona.</p></div>
+            <div class="info-box"><h4>Dos estrellas</h4><p>Cada una tiene sus propias variables de posición: (<code>xPos</code>, <code>yPos</code>) y (<code>xPos2</code>, <code>yPos2</code>).</p></div>
+        </div>
+
+        <details class="code-box">
+            <summary>Ver código p5.js</summary>
+<pre><code>var xPos = -40;
+var yPos = 40;
+var xPos2 = -40;
+var yPos2 = 40;
+
+function setup() {
+    var c = createCanvas(400, 400);
+    c.parent('canvas-holder');
+    noStroke();
+}
+
+function draw() {
+    background(10, 15, 45);
+    fill(255, 255, 255);
+    ellipse(70, 90, 3, 3);
+    ellipse(150, 40, 2, 2);
+    ellipse(280, 80, 4, 4);
+    ellipse(350, 150, 3, 3);
+    ellipse(90, 250, 4, 4);
+
+    // Estrella fugaz
+    fill(255, 100, 0, 100);
+    ellipse(xPos - 30, yPos - 15, 12, 12);
+    fill(255, 100, 0);
+    ellipse(xPos - 18, yPos - 9, 14, 14);
+    fill(255, 220, 50);
+    ellipse(xPos - 8, yPos - 4, 16, 16);
+
+    fill(255, 255, 255);
+    ellipse(xPos, yPos, 16, 16);
+
+    // Movimiento
+    xPos += 3;
+    yPos += 2;
+    if (xPos &gt; 420) {
+        xPos = -20;
+        yPos = 50;
+    }
+
+    // Segunda estrella
+    fill(100, 200, 255);
+    ellipse(xPos2, yPos2, 10, 10);
+    xPos2 -= 3;
+    yPos2 += 3;
+    if (xPos2 &lt; -20) {
+        xPos2 = 440;
+        yPos2 = 20;
+    }
+}</code></pre>
+        </details>
+
+        <div class="pager">
+            <a class="btn alt" href="nubes.html">← Nubes</a>
+            <a class="btn" href="index.html">Volver a la galería →</a>
+        </div>
+    </main>
+
+    <footer>
+        <p>Desarrollado por José Ricardo Orozco Sauceda | Ingeniería de Software y Desarrollo Web.</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.4/p5.min.js"></script>
+    <script src="sketch-estrella-fugaz.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Sol que Explota - Portafolio Khan Academy</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>El Sol que Explota</h1>
+        <nav>
+            <a href="index.html">Inicio</a>
+            <a href="teoria.html">Teoría</a>
+            <a href="dom-inspector.html">Árbol del DOM</a>
+            <a href="rana.html">Rana</a>
+            <a href="conejo.html">Conejo</a>
+            <a href="cena.html">Cena</a>
+            <a href="sol.html">Día Nevado</a>
+            <a href="muneco.html">Muñeco</a>
+            <a href="sol-explota.html" class="new active">Sol que Explota</a>
+            <a href="nubes.html" class="new">Nubes</a>
+            <a href="estrella-fugaz.html" class="new">Estrella Fugaz</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>☀️ El Sol que Explota</h2>
+        <p>Un pequeño sol aparece en el horizonte y, cuadro a cuadro, crece sin control hasta llenar todo el cielo. La clave está en una variable que aumenta en cada ejecución de <code>draw()</code>.</p>
+
+        <div class="canvas-container" id="canvas-holder"></div>
+
+        <div class="controls">
+            <button class="btn" data-action="toggle">⏸ Pausar</button>
+            <button class="btn alt" data-action="reset">↺ Reiniciar</button>
+        </div>
+
+        <div class="info-grid">
+            <div class="info-box"><h4>Variable de estado</h4><p><code>sunSize</code> guarda el diámetro del sol y se incrementa en 1 por cada frame.</p></div>
+            <div class="info-box"><h4>Orden de dibujo</h4><p>Primero el cielo y el sol, después el pasto: el pasto tapa la mitad del sol, como un horizonte.</p></div>
+            <div class="info-box"><h4>Animación</h4><p><code>draw()</code> se repite ~60 veces por segundo y redibuja todo el lienzo.</p></div>
+        </div>
+
+        <details class="code-box">
+            <summary>Ver código p5.js</summary>
+<pre><code>var sunSize = 30;
+
+function setup() {
+    var c = createCanvas(400, 400);
+    c.parent('canvas-holder');
+    noStroke();
+}
+
+function draw() {
+    background(82, 222, 240);          // cielo azul
+
+    fill(255, 204, 0);                 // sol
+    ellipse(200, 298, sunSize, sunSize);
+
+    fill(76, 168, 67);                 // pasto
+    rect(0, 300, 400, 100);
+
+    sunSize = sunSize + 1;
+}</code></pre>
+        </details>
+
+        <div class="pager">
+            <a class="btn alt" href="muneco.html">← Muñeco</a>
+            <a class="btn" href="nubes.html">Nubes que se separan →</a>
+        </div>
+    </main>
+
+    <footer>
+        <p>Desarrollado por José Ricardo Orozco Sauceda | Ingeniería de Software y Desarrollo Web.</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.4/p5.min.js"></script>
+    <script src="sketch-sol-explota.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>

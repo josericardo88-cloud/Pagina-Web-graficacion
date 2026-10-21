@@ -18,50 +18,167 @@
             <a href="cena.html">Cena</a>
             <a href="sol.html">Día Nevado</a>
             <a href="muneco.html">Muñeco</a>
+            <a href="sol-explota.html" class="new">Sol que Explota</a>
+            <a href="nubes.html" class="new">Nubes</a>
+            <a href="estrella-fugaz.html" class="new">Estrella Fugaz</a>
         </nav>
     </header>
 
-    <main>
+    <main class="wide">
         <h2>Representación Gráfica y Jerárquica del DOM</h2>
-        <p>A continuación se muestra la representación visual del árbol del DOM para las páginas principales del sitio web, destacando la relación jerárquica desde el nodo raíz hasta sus elementos hijos[cite: 1]:</p>
+        <p>
+            El Modelo de Objetos del Documento (DOM) interpreta cada documento HTML como un árbol: la raíz es
+            <code>&lt;html&gt;</code>, de ella cuelgan <code>&lt;head&gt;</code> y <code>&lt;body&gt;</code>, y cada
+            etiqueta es un nodo que JavaScript puede leer y modificar. Selecciona una página para ver su árbol real
+            (haz clic en un nodo para colapsar o expandir su rama).
+        </p>
 
-        <div class="dom-tree">
-            <!-- Nivel Raíz -->
-            <div class="dom-node">&lt;html&gt; (Raíz del Documento)</div>
-            
-            <div class="dom-branch">
-                <!-- Rama Head -->
-                <div class="dom-subgroup">
-                    <div class="dom-node">&lt;head&gt;</div>
-                    <div class="dom-branch">
-                        <div class="dom-node" style="font-size: 0.8rem; background: #0f172a; color: #cbd5e1;">
-                            &lt;meta&gt;<br>&lt;title&gt;<br>&lt;link rel="stylesheet"&gt;
-                        </div>
-                    </div>
-                </div>
+        <div class="tabs" id="tabs"></div>
 
-                <!-- Rama Body -->
-                <div class="dom-subgroup">
-                    <div class="dom-node">&lt;body&gt;</div>
-                    <div class="dom-branch">
-                        <div class="dom-subgroup">
-                            <div class="dom-node" style="font-size: 0.85rem;">&lt;header&gt;</div>
-                            <div class="dom-node" style="font-size: 0.85rem; margin-top:15px;">&lt;nav&gt; (Enlaces)</div>
-                        </div>
-                        <div class="dom-subgroup">
-                            <div class="dom-node" style="font-size: 0.85rem;">&lt;main id="..."&gt;</div>
-                            <div class="dom-node" style="font-size: 0.85rem; margin-top:15px; color: #f43f5e;">&lt;canvas&gt; (p5.js)</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="stats">
+            <div class="stat"><b id="st-total">0</b><span>Elementos</span></div>
+            <div class="stat"><b id="st-depth">0</b><span>Profundidad</span></div>
+            <div class="stat"><b id="st-canvas">0</b><span>&lt;canvas&gt;</span></div>
+            <div class="stat"><b id="st-scripts">0</b><span>&lt;script&gt;</span></div>
         </div>
 
-        <p style="margin-top: 30px;"><strong>Estructura explicada:</strong> El Modelo de Objetos del Documento (DOM) interpreta los documentos HTML como una estructura de árbol jerárquica donde cada etiqueta es un nodo interactuable por JavaScript.</p>
+        <div class="legend">
+            <span><i style="background:#f472b6"></i>Estructura</span>
+            <span><i style="background:#818cf8"></i>Contenedores semánticos</span>
+            <span><i style="background:#34d399"></i>Contenido</span>
+            <span><i style="background:#fbbf24"></i>Medios / canvas</span>
+            <span><i style="background:#22d3ee"></i>Metadatos</span>
+        </div>
+
+        <div class="controls">
+            <button class="btn alt" id="expand-all">Expandir todo</button>
+            <button class="btn alt" id="collapse-all">Colapsar ramas</button>
+        </div>
+
+        <div class="dom-tree"><div class="tree" id="tree"></div></div>
+        <p class="dom-note" id="note"></p>
     </main>
 
     <footer>
         <p>Portafolio Gráfico Interactivo - Tecnológico Nacional de México.</p>
     </footer>
+
+    <script src="main.js"></script>
+    <script>
+        const PAGES = [
+            { name: 'Inicio', file: 'index.html' },
+            { name: 'Teoría', file: 'teoria.html' },
+            { name: 'Árbol del DOM', file: 'dom-inspector.html' },
+            { name: 'Rana', file: 'rana.html' },
+            { name: 'Conejo', file: 'conejo.html' },
+            { name: 'Cena', file: 'cena.html' },
+            { name: 'Día Nevado', file: 'sol.html' },
+            { name: 'Muñeco', file: 'muneco.html' },
+            { name: 'Sol que Explota', file: 'sol-explota.html' },
+            { name: 'Nubes', file: 'nubes.html' },
+            { name: 'Estrella Fugaz', file: 'estrella-fugaz.html' }
+        ];
+
+        const treeBox = document.getElementById('tree');
+        const note = document.getElementById('note');
+        const tabsBox = document.getElementById('tabs');
+
+        function category(tag) {
+            if (['html', 'head', 'body'].includes(tag)) return 'structural';
+            if (['header', 'nav', 'main', 'footer', 'section', 'article', 'aside', 'div'].includes(tag)) return 'semantic';
+            if (['canvas', 'img', 'svg', 'video'].includes(tag)) return 'media';
+            if (['meta', 'title', 'link', 'script', 'style'].includes(tag)) return 'meta';
+            return 'content';
+        }
+
+        function depthOf(el) {
+            let max = 0;
+            for (const c of el.children) max = Math.max(max, depthOf(c));
+            return max + 1;
+        }
+
+        function makeNode(el, count) {
+            const tag = el.tagName.toLowerCase();
+            const li = document.createElement('li');
+            const span = document.createElement('span');
+            span.className = 'node ' + category(tag);
+            span.textContent = '<' + tag + '>';
+            if (el.id) { const e = document.createElement('em'); e.textContent = '#' + el.id; span.appendChild(e); }
+            else if (el.classList && el.classList.length) { const e = document.createElement('em'); e.textContent = '.' + el.classList[0]; span.appendChild(e); }
+            if (count > 1) { const s = document.createElement('small'); s.textContent = '×' + count; span.appendChild(s); }
+            span.title = el.outerHTML.slice(0, el.outerHTML.indexOf('>') + 1);
+            li.appendChild(span);
+
+            const kids = Array.from(el.children);
+            if (kids.length) {
+                span.classList.add('has-kids');
+                span.addEventListener('click', () => li.classList.toggle('closed'));
+                const ul = document.createElement('ul');
+                // Agrupa hermanos hoja consecutivos con la misma etiqueta (p. ej. los 11 <a> del menú)
+                let i = 0;
+                while (i < kids.length) {
+                    const k = kids[i];
+                    let n = 1;
+                    if (!k.children.length) {
+                        while (i + n < kids.length && kids[i + n].tagName === k.tagName && !kids[i + n].children.length) n++;
+                    }
+                    ul.appendChild(makeNode(k, n));
+                    i += n;
+                }
+                li.appendChild(ul);
+            }
+            return li;
+        }
+
+        function render(rootEl, noteText) {
+            treeBox.innerHTML = '';
+            const ul = document.createElement('ul');
+            const rootLi = makeNode(rootEl, 1);
+            rootLi.querySelector('.node').classList.add('root');
+            ul.appendChild(rootLi);
+            treeBox.appendChild(ul);
+            document.getElementById('st-total').textContent = rootEl.querySelectorAll('*').length + 1;
+            document.getElementById('st-depth').textContent = depthOf(rootEl);
+            document.getElementById('st-canvas').textContent = rootEl.querySelectorAll('canvas').length;
+            document.getElementById('st-scripts').textContent = rootEl.querySelectorAll('script').length;
+            note.textContent = noteText || '';
+        }
+
+        async function load(page, btn) {
+            document.querySelectorAll('#tabs .chip').forEach(b => b.classList.remove('on'));
+            btn.classList.add('on');
+            try {
+                const res = await fetch(page.file, { cache: 'no-store' });
+                if (!res.ok) throw new Error('No encontrado');
+                const html = await res.text();
+                const doc = new DOMParser().parseFromString(html, 'text/html');
+                render(doc.documentElement,
+                    'Árbol de ' + page.file + '. En las páginas de dibujo, p5.js inserta el <canvas> dentro del contenedor #canvas-holder al ejecutarse el sketch.');
+            } catch (err) {
+                if (page.file === 'dom-inspector.html') {
+                    render(document.documentElement, 'Árbol de esta misma página, leído en vivo con document.documentElement.');
+                } else {
+                    treeBox.innerHTML = '';
+                    note.textContent = 'No se pudo leer ' + page.file + '. Abre el sitio desde GitHub Pages o un servidor local (fetch no funciona con file://) y verifica que el archivo exista.';
+                }
+            }
+        }
+
+        PAGES.forEach((p, i) => {
+            const b = document.createElement('button');
+            b.className = 'chip';
+            b.textContent = p.name;
+            b.addEventListener('click', () => load(p, b));
+            tabsBox.appendChild(b);
+            if (i === 0) window.__first = b;
+        });
+
+        document.getElementById('expand-all').addEventListener('click', () =>
+            treeBox.querySelectorAll('li.closed').forEach(li => li.classList.remove('closed')));
+        document.getElementById('collapse-all').addEventListener('click', () =>
+            treeBox.querySelectorAll('li').forEach(li => { if (li.querySelector(':scope > ul > li > ul')) li.classList.add('closed'); }));
+
+        load(PAGES[0], window.__first);
+    </script>
 </body>
 </html>
