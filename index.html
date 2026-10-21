@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portafolio de Proyectos - Khan Academy</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="wow.css">
 </head>
-<body>
+<body class="wow">
     <header>
         <h1>Portafolio Web: Khan Academy a Código Nativo</h1>
         <nav>
@@ -24,7 +25,107 @@
         </nav>
     </header>
 
-    <main class="wide">
+    <!-- ===================== PORTAL ORBITAL ===================== -->
+    <section class="portal" id="portal" aria-label="Menú principal">
+        <canvas class="warp" id="warp" aria-hidden="true"></canvas>
+
+        <div class="portal-head">
+            <p class="kicker">Tecnológico Nacional de México · José Ricardo Orozco Sauceda</p>
+            <h2 class="wow-title">De Khan Academy al código real</h2>
+        </div>
+
+        <div class="system" id="system">
+            <div class="corona" aria-hidden="true"></div>
+            <div class="core" aria-hidden="true"><i>☀</i><b>Portafolio<br>p5.js</b></div>
+
+            <!-- Anillo 1: proyectos nuevos (animación en vivo) -->
+            <div class="ring r1 cw">
+                <a class="planet s1" href="sol-explota.html" style="--a:0deg;--i:0;--c1:#fde047;--c2:#fb923c"
+                   data-tag="Nuevo" data-title="El Sol que Explota" data-desc="Un sol que crece sin parar detrás del horizonte."
+                   data-glow="rgba(251,191,36,.8)" aria-label="El Sol que Explota">
+                    <span class="p-in"><span class="ping"></span>
+                        <span class="orb"><canvas width="400" height="400" data-preview="sol"></canvas></span>
+                        <span class="label">Sol que Explota</span></span>
+                </a>
+                <a class="planet s1" href="nubes.html" style="--a:120deg;--i:1;--c1:#7dd3fc;--c2:#0284c7"
+                   data-tag="Nuevo" data-title="Nubes que se Separan" data-desc="Dos nubes se alejan mientras el sol crece."
+                   data-glow="rgba(56,189,248,.8)" aria-label="Nubes que se Separan">
+                    <span class="p-in"><span class="ping"></span>
+                        <span class="orb"><canvas width="400" height="400" data-preview="nubes"></canvas></span>
+                        <span class="label">Nubes</span></span>
+                </a>
+                <a class="planet s1" href="estrella-fugaz.html" style="--a:240deg;--i:2;--c1:#c4b5fd;--c2:#6d28d9"
+                   data-tag="Nuevo" data-title="Estrella Fugaz" data-desc="Dos estrellas con estela cruzan el cielo nocturno."
+                   data-glow="rgba(167,139,250,.85)" aria-label="Estrella Fugaz">
+                    <span class="p-in"><span class="ping"></span>
+                        <span class="orb"><canvas width="400" height="400" data-preview="estrella"></canvas></span>
+                        <span class="label">Estrella Fugaz</span></span>
+                </a>
+            </div>
+
+            <!-- Anillo 2: proyectos clásicos -->
+            <div class="ring r2 ccw">
+                <a class="planet s2" href="rana.html" style="--a:0deg;--i:3;--c1:#a3e635;--c2:#16a34a"
+                   data-tag="Clásico" data-title="Rana" data-desc="Dibujo vectorial de una rana verde."
+                   data-glow="rgba(74,222,128,.8)" aria-label="Rana">
+                    <span class="p-in"><span class="orb">🐸</span><span class="label">Rana</span></span>
+                </a>
+                <a class="planet s2" href="conejo.html" style="--a:72deg;--i:4;--c1:#fb923c;--c2:#db2777"
+                   data-tag="Clásico" data-title="Dientes de Conejo" data-desc="Un conejo con orejas, ojos y dientes dibujados con formas."
+                   data-glow="rgba(244,114,182,.8)" aria-label="Dientes de Conejo">
+                    <span class="p-in"><span class="orb">🐰</span><span class="label">Conejo</span></span>
+                </a>
+                <a class="planet s2" href="cena.html" style="--a:144deg;--i:5;--c1:#fcd34d;--c2:#b45309"
+                   data-tag="Clásico" data-title="¿Qué hay de cena?" data-desc="Un plato servido visto desde arriba."
+                   data-glow="rgba(245,158,11,.8)" aria-label="Qué hay de cena">
+                    <span class="p-in"><span class="orb">🍽️</span><span class="label">Cena</span></span>
+                </a>
+                <a class="planet s2" href="sol.html" style="--a:216deg;--i:6;--c1:#7dd3fc;--c2:#0369a1"
+                   data-tag="Clásico" data-title="Día Nevado Soleado" data-desc="Un muñeco de nieve bajo un sol brillante."
+                   data-glow="rgba(125,211,252,.8)" aria-label="Día Nevado Soleado">
+                    <span class="p-in"><span class="orb">🌞</span><span class="label">Día Nevado</span></span>
+                </a>
+                <a class="planet s2" href="muneco.html" style="--a:288deg;--i:7;--c1:#38bdf8;--c2:#6d28d9"
+                   data-tag="Clásico" data-title="Muñeco de Nieve" data-desc="Ilustración del muñeco con círculos y líneas."
+                   data-glow="rgba(129,140,248,.8)" aria-label="Muñeco de Nieve">
+                    <span class="p-in"><span class="orb">⛄</span><span class="label">Muñeco</span></span>
+                </a>
+            </div>
+
+            <!-- Anillo 3: aprende y explora -->
+            <div class="ring r3 cw">
+                <a class="planet s3" href="teoria.html" style="--a:30deg;--i:8;--c1:#f9a8d4;--c2:#be185d"
+                   data-tag="Aprende" data-title="Teoría" data-desc="Qué es &lt;canvas&gt;, su contexto 2D y los fundamentos de p5.js."
+                   data-glow="rgba(244,114,182,.8)" aria-label="Teoría">
+                    <span class="p-in"><span class="orb">📚</span><span class="label">Teoría</span></span>
+                </a>
+                <a class="planet s3" href="dom-inspector.html" style="--a:150deg;--i:9;--c1:#6ee7b7;--c2:#047857"
+                   data-tag="Explora" data-title="Árbol del DOM" data-desc="La jerarquía de etiquetas de cada página, dibujada como árbol."
+                   data-glow="rgba(52,211,153,.8)" aria-label="Árbol del DOM">
+                    <span class="p-in"><span class="orb">🌳</span><span class="label">Árbol del DOM</span></span>
+                </a>
+                <a class="planet s3" href="#galeria" data-warp="no" style="--a:270deg;--i:10;--c1:#fde68a;--c2:#a16207"
+                   data-tag="Galería" data-title="Galería completa" data-desc="Todas las tarjetas con filtros y botón sorpresa, más abajo."
+                   data-glow="rgba(253,230,138,.8)" aria-label="Ir a la galería">
+                    <span class="p-in"><span class="orb">🪐</span><span class="label">Galería</span></span>
+                </a>
+            </div>
+        </div>
+
+        <div class="portal-foot">
+            <div class="info" id="info" aria-live="polite">
+                <span class="tag">Observatorio</span>
+                <h3>Elige un planeta</h3>
+                <p>Pasa el cursor sobre un mundo para descubrirlo y haz clic para viajar hasta él.</p>
+            </div>
+            <a class="down" href="#galeria">↓ Ver galería completa</a>
+        </div>
+    </section>
+
+    <div class="warp-flash" aria-hidden="true"></div>
+
+    <!-- ===================== GALERÍA ===================== -->
+    <main class="wide" id="galeria">
         <section class="hero">
             <h2>Mesa de Control del Observatorio</h2>
             <p>
@@ -163,5 +264,6 @@
 
     <script src="previews.js"></script>
     <script src="main.js"></script>
+    <script src="wow.js"></script>
 </body>
 </html>
